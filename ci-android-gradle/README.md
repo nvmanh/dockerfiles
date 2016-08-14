@@ -15,7 +15,7 @@ an Android CI(Continuous Integration) docker that include :
 ### pull image
 
 ```shell
-sudo docker pull season/android-ci-docker
+sudo docker pull season/ci-android-gradle
 ```
 
 ### run image whit params
@@ -23,5 +23,5 @@ sudo docker pull season/android-ci-docker
 ```shell
 # --hostname : some buildtools will append hostname to build informations
 # -p 10022:22 mapping SSH port for Jenkins and other CI server useage
-sudo docker run -d --hostname android-build-node-1 --name android-build-node-1 -p 10022:22 season/android-ci-docker sleep 99999D
+sudo docker run -d --hostname android-build-node-1 --name android-build-node-1 -p 10022:22 season/ci-android-gradle
 ```
