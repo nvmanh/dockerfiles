@@ -3,9 +3,9 @@
 ## intro
 
 an Android CI(Continuous Integration) docker that include :
+
 * Android SDK(build-tools, api23, api19, api17)
 * OpenJDK-7
-* Maven 3
 * Gradle
 * Git (for checkout source)
 * SSH Server (for jenkins slave)
@@ -23,5 +23,23 @@ sudo docker pull season/ci-android-gradle
 ```shell
 # --hostname : some buildtools will append hostname to build informations
 # -p 10022:22 mapping SSH port for Jenkins and other CI server useage
-sudo docker run -d --hostname android-build-node-1 --name android-build-node-1 -p 10022:22 season/ci-android-gradle
+# RESET_ROOT_PASSWORD new root password, if u dont like this way, you can use docker exec command to change password
+sudo docker run -d --hostname build-android-gralde-node-1 --env RESET_ROOT_PASSWORD=your_root_pwd --name build-android-gralde-node-1 -p 10022:22 season/ci-android-gradle
 ```
+
+### how to change root password?
+
+```shell
+# run bash
+sudo docker exec -ti build-android-gralde-node-1 bash
+# use chpasswd to change root passwd
+echo "root:new_root_pwd" | chpasswd
+# exit
+exit
+```
+
+### install/update sdk after start container
+
+when the container running, you can update your android sdk by SSH or terminal
+
+in ssh shell, run android update sdk command to install/update android sdk, lookup: [Dockerfile](Dockerfile)
