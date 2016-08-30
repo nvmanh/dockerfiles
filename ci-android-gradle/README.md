@@ -24,7 +24,10 @@ sudo docker pull season/ci-android-gradle
 # --hostname : some buildtools will append hostname to build informations
 # -p 10022:22 mapping SSH port for Jenkins and other CI server useage
 # RESET_ROOT_PASSWORD new root password, if u dont like this way, you can use docker exec command to change password
-sudo docker run -d --hostname build-android-gralde-node-1 --env RESET_ROOT_PASSWORD=your_root_pwd --name build-android-gralde-node-1 -p 10022:22 season/ci-android-gradle
+# when I run /usr/sbin/sshd -D directly, I got an error: 
+# Missing privilege separation direct: /var/run/sshd -D
+# so, I use sleep 999d to instead to run sshd direct
+sudo docker run -d --hostname build-android-gralde-node-1 --env RESET_ROOT_PASSWORD=your_root_pwd --name build-android-gralde-node-1 -p 10022:22 season/ci-android-gradle sleep 999d
 ```
 
 ### how to change root password?
