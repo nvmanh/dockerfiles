@@ -38,6 +38,15 @@ echo "root:new_root_pwd" | chpasswd
 exit
 ```
 
+
+### how to add slave to your jenkins?
+
+"Manage Jenkins"->"Manage Nodes"->"New Node"
+
+![new node](images/jenkins_add_node.png)
+
+*Prefix Start Slave Command field must add: source /etc/profile && (notic, a blank at the end)*
+
 ### install/update sdk after start container
 
 when the container running, you can update your android sdk by SSH or terminal
